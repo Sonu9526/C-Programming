@@ -1,0 +1,13 @@
+pointer is dervived data type in c
+
+pointer contain memory addresses as their value
+
+can be used to acces and manipulate data stored in the memory 
+
+pointer value : the address of a variable obtained through addres operator can be store in another variable called pointer variable "&"
+
+the "&" operator can be used with a simple variable or an array element
+
+
+accessing a variable throug its pointer done by using unary operator "*"(*p means value at addres p)
+

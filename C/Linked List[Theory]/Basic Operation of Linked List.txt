@@ -1,0 +1,8 @@
+1)Traversal-Traverse all node one after another
+2)Insertion-Add a node at given position
+3)Deletion-Delete a node
+4)Searching-Search element by value
+5)Sorting-Arranging the node in specific node
+6)Updating-Update a node
+7)Merging-Merging Two linked list two one
+8)Reversing-Reverse a linkec list

@@ -1,0 +1,7 @@
+->Array has limitation 
+1)size of array is fixed 
+2)stores in contigoues memory location  
+3)insertion and deletion are expensive 
+->Dynamic size
+->Stores at any available space 
+->Ease of insrtion and deletion

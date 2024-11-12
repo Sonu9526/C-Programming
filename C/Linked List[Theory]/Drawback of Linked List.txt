@@ -1,0 +1,2 @@
+1)Random acces not allowed
+2)extra memory is required for pointers

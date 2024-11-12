@@ -1,0 +1,12 @@
+Create(N)
+1)set START =NULL,C=0
+2)Repeat step 3 to 8 while C<=N
+3)Create NEWNODE
+4)Get VALUE
+5)set DATA(NEWNODE)=VALUE
+6)set NEXT(NEWNODE)=NULL
+7)if START=NULL then
+    set START = NEWNODE,CURRENT=NEWNODE
+   else
+    set NEXT(CURRENT)=NEWNODE,CURRENT=NEWNODE
+8)set C = C+1
