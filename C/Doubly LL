@@ -1,0 +1,109 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+    struct Node* prev;
+};
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
+}
+
+void insertAtBeginning(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head != NULL) {
+        (*head)->prev = newNode;
+        newNode->next = *head;
+    }
+    *head = newNode;
+}
+
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+    struct Node* temp = *head;
+    while (temp->next != NULL)
+        temp = temp->next;
+    temp->next = newNode;
+    newNode->prev = temp;
+}
+
+void insertAfterNode(struct Node* prevNode, int data) {
+    if (prevNode == NULL) {
+        printf("The given previous node cannot be NULL");
+        return;
+    }
+    struct Node* newNode = createNode(data);
+    newNode->next = prevNode->next;
+    newNode->prev = prevNode;
+    prevNode->next = newNode;
+    if (newNode->next != NULL)
+        newNode->next->prev = newNode;
+}
+
+void deleteNode(struct Node** head, struct Node* delNode) {
+    if (*head == NULL || delNode == NULL)
+        return;
+    if (*head == delNode)
+        *head = delNode->next;
+    if (delNode->next != NULL)
+        delNode->next->prev = delNode->prev;
+    if (delNode->prev != NULL)
+        delNode->prev->next = delNode->next;
+    free(delNode);
+}
+
+void printList(struct Node* node) {
+    while (node != NULL) {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+    printf("\n");
+}
+
+void searchList(struct Node* head, int key) {
+    struct Node* temp = head;
+    int pos = 1;
+    while (temp != NULL) {
+        if (temp->data == key) {
+            printf("Element %d found at position %d\n", key, pos);
+            return;
+        }
+        temp = temp->next;
+        pos++;
+    }
+    printf("Element %d not found in the list\n", key);
+}
+
+int main() {
+    clrscr();
+    struct Node* head = NULL;
+
+    insertAtEnd(&head, 10);
+    insertAtBeginning(&head, 20);
+    insertAtEnd(&head, 30);
+    insertAfterNode(head->next, 25);
+
+    printf("Created Doubly Linked List: ");
+    printList(head);
+
+    searchList(head, 25);
+    searchList(head, 40);
+
+    deleteNode(&head, head->next->next);
+    printf("List after Deletion: ");
+    printList(head);
+
+    getch();
+    return 0;
+}
